@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+</head>
+<body>
+    <div class="container">
+        <h1><b>WEATHER APP</b></h1>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter City">
+        <button type="submit">Search</button>
+    </form>
+
+    
+    <article class="widget">
+        <div class="weatherIcon"><img src="https://openweathermap.org/img/wn/{{ icon }}.png" width="100px"></div>
+        <div class="weatherInfo">
+          <div class="temperature"><span>{{temp}}&deg;C     </span></div>
+          <div class="description">    
+            <div class="weatherCondition">{{description}}</div>    
+            <div class="place">{{city}}</div>
+          </div>
+        </div>
+        <div class="date">{{day}}</div>
+      </article>
+    {% if exception_occured %}
+       <script>
+         windoe.onload=funtion(){
+          alert("city information is not available to our API");}
+    {% endif %}
+    </script>
+</body>
+
+
+</html>
+
+  
+  
+  
+  
+  
+  
